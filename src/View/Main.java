@@ -52,6 +52,8 @@ public class Main extends javax.swing.JFrame {
         jComboBoxChooseCategorieIngredient.removeAllItems();
         jComboBoxListIngredients.removeAllItems();
         
+        JOptionPane.showMessageDialog(this, "Gros t'as géré jusqu'aux cours. Maintenant il faut faire le crud des plages horaires pour terminer les cours ensuite");
+        
         
         
         //model.ModelIngredient.selectAllIngredients();
@@ -106,6 +108,8 @@ public class Main extends javax.swing.JFrame {
         jLabelChooseCategorieIngredient = new javax.swing.JLabel();
         jComboBoxChooseCategorieIngredient = new javax.swing.JComboBox<>();
         jTextFieldChooseCategorieIngredient = new javax.swing.JTextField();
+        jLabelPrixIngredient = new javax.swing.JLabel();
+        jTextFieldPrixIngredient = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTextFieldAddVilleUser = new javax.swing.JTextField();
@@ -141,6 +145,18 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableUsers = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        jTextFieldRecetteInCours = new javax.swing.JTextField();
+        jTextFieldCuisinierInCours = new javax.swing.JTextField();
+        jLabelRecetteInCours = new javax.swing.JLabel();
+        jLabelCuisinierInCours = new javax.swing.JLabel();
+        jTextFieldLieuxInCours = new javax.swing.JTextField();
+        jLabelLieuxInCours = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabelPlageHoraireInCours = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jButtonAddCours = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -326,6 +342,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabelPrixIngredient.setText("Prix");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -335,15 +353,18 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(215, 215, 215)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNomIngrédient)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabelChooseCategorieIngredient)
                                 .addGap(43, 43, 43)
-                                .addComponent(jTextFieldChooseCategorieIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldChooseCategorieIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabelPrixIngredient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelNomIngrédient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldAddIngrédient)
-                            .addComponent(jComboBoxChooseCategorieIngredient, 0, 143, Short.MAX_VALUE)))
+                            .addComponent(jComboBoxChooseCategorieIngredient, 0, 143, Short.MAX_VALUE)
+                            .addComponent(jTextFieldPrixIngredient)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(460, 460, 460)
                         .addComponent(jButtonAddIngredient)))
@@ -356,7 +377,11 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldAddIngrédient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNomIngrédient))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPrixIngredient)
+                    .addComponent(jTextFieldPrixIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelChooseCategorieIngredient)
                     .addComponent(jComboBoxChooseCategorieIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -613,6 +638,84 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPanelCours.addTab("Les utilisateurs", jPanel2);
 
+        jLabelRecetteInCours.setText("Recette");
+
+        jLabelCuisinierInCours.setText("Cuisinier");
+
+        jLabelLieuxInCours.setText("Lieux");
+
+        jTextField5.setText("jTextField5");
+
+        jLabelPlageHoraireInCours.setText("Plage horaire");
+
+        jTextField6.setText("jTextField6");
+
+        jTextField7.setText("jTextField7");
+
+        jButtonAddCours.setText("Ajouter le cours");
+        jButtonAddCours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddCoursActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelPlageHoraireInCours)
+                            .addComponent(jLabelRecetteInCours))
+                        .addGap(126, 126, 126)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldRecetteInCours, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(129, 129, 129)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCuisinierInCours)
+                            .addComponent(jLabelLieuxInCours))
+                        .addGap(103, 103, 103)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldLieuxInCours, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCuisinierInCours)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(475, 475, 475)
+                        .addComponent(jButtonAddCours)))
+                .addContainerGap(580, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldRecetteInCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCuisinierInCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelRecetteInCours)
+                    .addComponent(jLabelCuisinierInCours))
+                .addGap(144, 144, 144)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldLieuxInCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelLieuxInCours)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPlageHoraireInCours)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(163, 163, 163)
+                .addComponent(jButtonAddCours)
+                .addContainerGap(285, Short.MAX_VALUE))
+        );
+
+        jTabbedPanelCours.addTab("Cours", jPanel8);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -633,7 +736,15 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         String categorie = (String)jComboBoxChooseCategorieIngredient.getSelectedItem();
         String nom = jTextFieldAddIngrédient.getText();
-        model.ModelIngredient.addIngredient(nom, categorie);
+        String prix = jTextFieldPrixIngredient.getText();
+        
+        try{
+            int prixInt = Integer.parseInt(prix);
+            model.ModelIngredient.addIngredient(nom, categorie, prixInt);
+        }catch(Exception e){
+            System.out.println("Erreur lorsque l'on ajoute un ingrédient : "+e);
+        }
+        
         
     }//GEN-LAST:event_jButtonAddIngredientActionPerformed
 
@@ -820,6 +931,11 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonAddIngredientToRecetteActionPerformed
 
+    private void jButtonAddCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCoursActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonAddCoursActionPerformed
+
     /**jComboBoxChooseIngredientItemStateChanged
      * 
      * @param args the command line arguments
@@ -863,6 +979,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonAddAdmin;
     private javax.swing.JButton jButtonAddCategory;
+    private javax.swing.JButton jButtonAddCours;
     private javax.swing.JButton jButtonAddIngredient;
     private javax.swing.JButton jButtonAddIngredientToRecette;
     private javax.swing.JButton jButtonAddRecette;
@@ -885,8 +1002,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAddAdminPasswordConfirm;
     private javax.swing.JLabel jLabelAddAdminPrenom;
     private javax.swing.JLabel jLabelChooseCategorieIngredient;
+    private javax.swing.JLabel jLabelCuisinierInCours;
+    private javax.swing.JLabel jLabelLieuxInCours;
     private javax.swing.JLabel jLabelListIngredients;
     private javax.swing.JLabel jLabelNomIngrédient;
+    private javax.swing.JLabel jLabelPlageHoraireInCours;
+    private javax.swing.JLabel jLabelPrixIngredient;
+    private javax.swing.JLabel jLabelRecetteInCours;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -894,6 +1016,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPasswordField jPasswordFieldAddAdminPassword;
     private javax.swing.JPasswordField jPasswordFieldAddAdminPasswordConfirm;
     private javax.swing.JScrollPane jScrollPane1;
@@ -907,6 +1030,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextAreaAddCategory;
     private javax.swing.JTextArea jTextAreaAddRecette;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextFieldAddAdminAdresse;
     private javax.swing.JTextField jTextFieldAddAdminAnnee;
     private javax.swing.JTextField jTextFieldAddAdminJour;
@@ -919,7 +1045,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAddRecette;
     private javax.swing.JTextField jTextFieldAddVilleUser;
     private javax.swing.JTextField jTextFieldChooseCategorieIngredient;
+    private javax.swing.JTextField jTextFieldCuisinierInCours;
+    private javax.swing.JTextField jTextFieldLieuxInCours;
     private javax.swing.JTextField jTextFieldListIngredients;
+    private javax.swing.JTextField jTextFieldPrixIngredient;
+    private javax.swing.JTextField jTextFieldRecetteInCours;
     private javax.swing.JTextField jTextFieldSearchCategory;
     private javax.swing.JTextField jTextFieldSearchUsers;
     // End of variables declaration//GEN-END:variables

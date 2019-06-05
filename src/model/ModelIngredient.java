@@ -45,17 +45,18 @@ public class ModelIngredient {
         return ingredientInBase;
     }
     
-    public static void addIngredient(String nom, String categorie){
+    public static void addIngredient(String nom, String categorie, int prix){
         if(!verifyIngredient(nom)){
             Connection co = Model.startConnection();
             
             try{
-                String queryInsert = "INSERT INTO Ingredients (nom, Categorie_Categorie) VALUES (?,?)";
+                String queryInsert = "INSERT INTO Ingredients (nom, Categorie_Categorie, prix) VALUES (?,?,?)";
                 
                 PreparedStatement stmt = co.prepareStatement(queryInsert);
             
                 stmt.setString(1, nom);
                 stmt.setString(2, categorie);
+                stmt.setInt(3, prix);
             
                 stmt.executeUpdate();
                 
