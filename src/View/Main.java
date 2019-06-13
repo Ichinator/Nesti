@@ -20,7 +20,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -37,11 +40,19 @@ public class Main extends javax.swing.JFrame {
     
     ArrayList<String> arrayListIngredients = new ArrayList<>();
     
+    ArrayList<String> arrayListePlageHoraire = new ArrayList<>();
+    Map mapCuisiniers = new HashMap();
+    Map mapRecettes = new HashMap();
+    Map mapLieux = new HashMap();
+    
+
 
     /**
      * Creates new form Main
      */
     public Main() {
+        
+        
 
         initComponents();
 
@@ -54,13 +65,12 @@ public class Main extends javax.swing.JFrame {
         jComboBoxListIngredients.removeAllItems();
         
         
-        jComboBoxAddCoursCuisinier.removeAllItems();
         
         
-        
-        jComboBoxAddCoursRecette.removeAllItems();
-        jComboBoxAddCoursPlageHoraire.removeAllItems();
-        jComboBoxAddCoursLieux.removeAllItems();
+        fillJComboBoxAddCoursCuisinier();
+        fillJComboBoxAddCoursRecette();
+        fillJComboBoxAddCoursPlageHoraire();
+        fillJComboBoxAddCoursLieux();
         
                 
         
@@ -85,6 +95,39 @@ public class Main extends javax.swing.JFrame {
         // On remplit jTableCategory avec le ResultSet
         ResultSet resultAllUsers = model.ModelUtilisateurs.selectAllUser();
         jTableUsers.setModel(DbUtils.resultSetToTableModel(resultAllUsers));
+    }
+    
+    /**
+     * Remplit la jComboBoxAddCoursCuisinier
+     */
+    
+    private void fillJComboBoxAddCoursCuisinier(){
+        jComboBoxAddCoursCuisinier.removeAllItems();
+         
+        this.mapCuisiniers = model.ModelUtilisateurs.selectAllCuisiniers();
+        this.mapCuisiniers.forEach( (k,v) -> jComboBoxAddCoursCuisinier.addItem(v.toString()));
+    }
+    
+    private void fillJComboBoxAddCoursRecette(){
+        jComboBoxAddCoursRecette.removeAllItems();
+         
+        this.mapRecettes = model.ModelRecette.selectAllRecettes();
+        this.mapRecettes.forEach( (k,v) -> jComboBoxAddCoursRecette.addItem(v.toString()));
+        
+    }
+    
+    private void fillJComboBoxAddCoursPlageHoraire(){
+        jComboBoxAddCoursPlageHoraire.removeAllItems();
+         
+        this.arrayListePlageHoraire = model.ModelPlageHoraire.selectAllPlageHoraire();
+        this.arrayListePlageHoraire.forEach( (n) -> jComboBoxAddCoursPlageHoraire.addItem(n));
+        
+    }
+    
+    private void fillJComboBoxAddCoursLieux(){
+        jComboBoxAddCoursLieux.removeAllItems();
+        this.mapLieux = model.ModelLieux.selectAllLieux();
+        this.mapLieux.forEach((k,v)->jComboBoxAddCoursLieux.addItem(v.toString()));
     }
    
     /**
@@ -992,7 +1035,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddIngredientToRecetteActionPerformed
 
     private void jButtonAddCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCoursActionPerformed
-        // TODO add your handling code here:
+        
+        int idCuisinier = getKeyByValue(mapCuisiniers, jComboBoxAddCoursCuisinier.getSelectedItem());
+        int idRecette = getKeyByValue(mapRecettes, jComboBoxAddCoursRecette.getSelectedItem());
+        String plageHoraire = jComboBoxAddCoursPlageHoraire.getSelectedItem().toString();
+        
+        
+        int idLieux = getKeyByValue(mapLieux, jComboBoxAddCoursLieux.getSelectedItem());
+        
+        model.ModelCours.addCours(idCuisinier, idRecette, plageHoraire, idLieux);
         
     }//GEN-LAST:event_jButtonAddCoursActionPerformed
 
@@ -1004,6 +1055,22 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldListIngredientsActionPerformed
 
+    /**
+     * Retourne la clé d'un élément d'une map en fonction de sa valeur
+     * @param <T>
+     * @param <E>
+     * @param map
+     * @param value
+     * @return 
+     */
+    public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
+    for (Entry<T, E> entry : map.entrySet()) {
+        if (Objects.equals(value, entry.getValue())) {
+            return entry.getKey();
+        }
+    }
+    return null;
+}
     /**jComboBoxChooseIngredientItemStateChanged
      * 
      * @param args the command line arguments

@@ -277,5 +277,29 @@ public class ModelUtilisateurs {
        
     }
 
+    public static Map selectAllCuisiniers() {
+        Connection co = Model.startConnection();
+        Map mapCuisiniers = new HashMap();
+        
+        try{
+            String querySelect = "SELECT id,nom, prenom FROM Utilisateurs WHERE isCuisinier = 1";
+            PreparedStatement stmt = co.prepareStatement(querySelect);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            
+            
+            while(rs.next()){
+                mapCuisiniers.put(rs.getInt(1), rs.getString(2)+" "+rs.getString(3));                
+            }
+            rs.close();
+            Model.closeConnection(co);
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        return mapCuisiniers;
+    }
+
     
 }

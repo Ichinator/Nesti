@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -159,5 +161,30 @@ public class ModelRecette {
         Model.closeConnection(co);
         
         return idRecette;
+    }
+    
+    
+    public static Map selectAllRecettes() {
+        Connection co = Model.startConnection();
+        Map mapRecettes = new HashMap();
+        
+        try{
+            String querySelect = "SELECT idRec,nom FROM Recette";
+            PreparedStatement stmt = co.prepareStatement(querySelect);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            
+            
+            while(rs.next()){
+                mapRecettes.put(rs.getInt(1), rs.getString(2));                
+            }
+            rs.close();
+            Model.closeConnection(co);
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        
+        return mapRecettes;
     }
 }
