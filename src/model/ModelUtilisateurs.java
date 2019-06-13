@@ -10,7 +10,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +34,16 @@ public class ModelUtilisateurs {
         }
     }*/
     
-    
+    /**
+     * Ajoute un utilisateur qui sera administrateur
+     * @param nom
+     * @param prenom
+     * @param dateNaissance
+     * @param adresse
+     * @param ville
+     * @param password
+     * @param mail 
+     */
     
     public static void addUserAdmin(String nom, String prenom, String dateNaissance, String adresse, String ville, String password, String mail){
         
@@ -68,6 +80,11 @@ public class ModelUtilisateurs {
             
     }
     
+    /**
+     * Donne à un utilisateur existant le rôle administrateur
+     * @param nom
+     * @param prenom 
+     */
     public static void updateUserToAdmin(String nom, String prenom){
         Connection co = Model.startConnection();
         
@@ -90,7 +107,12 @@ public class ModelUtilisateurs {
             }
     }
     
-    
+    /**
+     * Vérifie la présence d'un utilisateur
+     * @param nom
+     * @param prenom
+     * @return 
+     */
     public static boolean verifyUser(String nom, String prenom){
         boolean userInBase = false;
         Connection co = Model.startConnection();
@@ -121,7 +143,13 @@ public class ModelUtilisateurs {
     }
     
     
-    
+    /**
+     * Vérifie qu'un utilisateur est un administrateur
+     * @param nom
+     * @param prenom
+     * @param password
+     * @return 
+     */
     public static boolean verifyAdmin(String nom, String prenom, String password) {
         
         boolean returnType = false;
@@ -154,10 +182,16 @@ public class ModelUtilisateurs {
         return returnType;
     }
     
+    /**
+     * Sélectionne tous les utilisateurs
+     * @return 
+     */
     public static ResultSet selectAllUser() {
         
         Connection co = Model.startConnection();
         ResultSet rs = null;
+        
+       
         
         try{
             String querySelect = "SELECT * FROM Utilisateurs JOIN Ville ON idVille = Ville_idVille";  
@@ -174,6 +208,15 @@ public class ModelUtilisateurs {
     }
     
     
+    /**
+     * Retourne un ResultSet d'utilisateurs en fonction des chaînes de caractères du nom et du prénom mais aussi en fonction des rôles
+     * @param nom
+     * @param prenom
+     * @param isClient
+     * @param isCuisinier
+     * @param isAdmin
+     * @return 
+     */
     public static ResultSet selectParticularUsersWithConditions(String nom, String prenom, Boolean isClient, Boolean isCuisinier, Boolean isAdmin){
        Connection co = Model.startConnection();
         ResultSet rs = null;
@@ -233,4 +276,6 @@ public class ModelUtilisateurs {
        return rs;  
        
     }
+
+    
 }

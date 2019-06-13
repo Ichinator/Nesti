@@ -19,31 +19,10 @@ import java.util.logging.Logger;
  * @author ichinator
  */
 public class ModelRecette {
-    public static void createRecipe(String nom){
-        Connection co = Model.startConnection();
-        
-        try {
-            Statement declaration = co.createStatement();
-            
-            String query = "INSERT INTO Recette (nom) VALUES ('"+nom+"')";
-            
-            
-            int executeUpdate = declaration.executeUpdate(query);
-            
-            
-            System.out.println(executeUpdate);
-            
-            System.out.println(query);
-            
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ModelRecette.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        Model.closeConnection(co);
-    }
-    
+    /**
+     * Retourne une recette en fonction de son identifiant
+     * @param id 
+     */
     public static void readRecipeById(int id){
         Connection co = Model.startConnection();
         try{
@@ -66,25 +45,37 @@ public class ModelRecette {
         
     }
     
-    public static void readAllRecipes(){
+    /**
+     * Retourne une liste de recettes
+     * @return 
+     */
+    public static ArrayList<String> readAllRecipes(){
         Connection co = Model.startConnection();
-        
+        ResultSet rs;
+         ArrayList<String> listeRecettes = new ArrayList<String>();
         try{
             Statement stmt = co.createStatement();
             String selectQuery = "SELECT * FROM Recette";
             
-            ResultSet rs = stmt.executeQuery(selectQuery);
+            rs = stmt.executeQuery(selectQuery);
             
             while(rs.next()){
-                System.out.println("Id : "+ rs.getInt(1)+" nom : "+rs.getString("nom"));
+                listeRecettes.add(rs.getString(1));                
             }
             rs.close();
             Model.closeConnection(co);
         }catch (SQLException ex) {
             Logger.getLogger(ModelRecette.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        return listeRecettes;
     }
 
+    /**
+     * Ajoute une recette
+     * @param nom
+     * @param description 
+     */
     public static void addRecette(String nom, String description) {
         Connection co = Model.startConnection();
         
@@ -102,6 +93,11 @@ public class ModelRecette {
         }
     }
 
+    /**
+     * Lie une recette avec des ingrédients
+     * @param nom
+     * @param arrayListIngredients 
+     */
     public static void addRecetteIngredients(String nom, ArrayList<String> arrayListIngredients) {
         System.out.println("addRectte");
         
@@ -131,6 +127,11 @@ public class ModelRecette {
         }
     }
 
+    /**
+     * Sélectionne l'identifiant d'une recette
+     * @param nom
+     * @return 
+     */
     private static int selectId(String nom) {
         
         System.out.println("Select de la recette");

@@ -18,6 +18,12 @@ import java.util.logging.Logger;
  * @author ichinator
  */
 public class ModelCategorie {
+    
+    /**
+     * Prend en paramètre le nom et la description et crée une catégorie. Avant cela vérifie que la catégorie n'existe pas
+     * @param nomCategorie
+     * @param descriptionCategory 
+     */
     public static void createCategory(String nomCategorie, String descriptionCategory){
         Connection co = Model.startConnection();
         try{
@@ -64,6 +70,10 @@ public class ModelCategorie {
         Model.closeConnection(co);
     }
     
+    /**
+     * Sélectionne toutes les catégories
+     * @return 
+     */
     public static ResultSet selectAllCategory(){
     
         Connection co = Model.startConnection();
@@ -80,6 +90,12 @@ public class ModelCategorie {
         
         return rs;
     }
+    
+    /**
+     * Sélectionne les catégories contenant la  chaîne de caractères en paramètre. Retourne un ResultSet
+     * @param searchCategory
+     * @return 
+     */
 
     public static ResultSet selectOneCategory(String searchCategory) {
         Connection co = Model.startConnection();
@@ -90,7 +106,6 @@ public class ModelCategorie {
             PreparedStatement stmt = co.prepareStatement(querySelect);
             stmt.setString(1, "%"+searchCategory+"%");
             rs = stmt.executeQuery();
-            return rs;
         }catch(SQLException ex){
             System.out.println(ex);
         }
@@ -98,6 +113,11 @@ public class ModelCategorie {
         return rs;
     }
     
+    /**
+     * Sélectionne les catégories contenant la  chaîne de caractères en paramètre. Retourne un ArrayList
+     * @param categorie
+     * @return 
+     */
     public static ArrayList selectCategorie(String categorie) {
         Connection co = Model.startConnection();
         

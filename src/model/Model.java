@@ -16,6 +16,10 @@ import java.util.logging.Logger;
  * @author ichinator
  */
 public class Model {
+    /**
+     * Crée une connexion
+     * @return 
+     */
     public static Connection startConnection(){
         String url = "jdbc:mysql://127.0.0.1/Nesti";
         
@@ -40,6 +44,10 @@ public class Model {
         return co;
     }
     
+    /**
+     * Ferme une connexion
+     * @param co 
+     */
     public static void closeConnection(Connection co){
         if(co != null){
             try {

@@ -20,6 +20,12 @@ import java.util.logging.Logger;
  * @author ichinator
  */
 public class ModelVille {
+    
+    /**
+     * Ajoute une ville
+     * @param nom
+     * @param CP 
+     */
     public static void addVille(String nom, int CP){
         Connection co = Model.startConnection();
         
@@ -40,27 +46,10 @@ public class ModelVille {
         }
     }
     
-    
-    public static void voirVille(){
-        Connection co = Model.startConnection();
-        
-        try{
-            Statement stmt = co.createStatement();
-            String selectQuery = "SELECT * FROM Ville";
-            
-            ResultSet rs = stmt.executeQuery(selectQuery);
-            
-            while(rs.next()){
-                System.out.println("Id : "+ rs.getInt(1)+" ville : "+rs.getString("ville")+" code postal "+rs.getInt("cp"));
-            }
-            rs.close();
-            Model.closeConnection(co);
-        }catch (SQLException ex) {
-            Logger.getLogger(ModelRecette.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    
+    /**
+     * Sélectionne une ville en fonction de son identifiant
+     * @param id 
+     */
     public static void voirUneVille(int id){
         Connection co = Model.startConnection();
         
@@ -80,6 +69,11 @@ public class ModelVille {
         }
     }
 
+    /**
+     * Sélectionne une liste de ville en fonction de la chaîne de caractères en paramètres
+     * @param ville
+     * @return 
+     */
     public static ArrayList selectVille(String ville) {
         Connection co = Model.startConnection();
         
@@ -114,6 +108,11 @@ public class ModelVille {
         return listeVilles;
     }
     
+    /**
+     * Sélectionne l'identifiant d'une ville en fonction de son nom
+     * @param ville
+     * @return 
+     */
     public static int selectOneVille(String ville){
         Connection co = Model.startConnection();
         Integer idVille =null;

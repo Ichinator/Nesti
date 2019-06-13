@@ -18,6 +18,17 @@ import java.util.logging.Logger;
  * @author ichinator
  */
 public class ModelClient {
+    
+    /**
+     * Ajoute un client
+     * @param nom
+     * @param prenom
+     * @param dateNaissance
+     * @param adresse
+     * @param idVille
+     * @param password
+     * @param mail 
+     */
     public static void addClient(String nom, String prenom, String dateNaissance, String adresse, int idVille, String password, String mail){
         Connection co = Model.startConnection();
         
@@ -39,7 +50,9 @@ public class ModelClient {
         }
     }
     
-    
+    /**
+     * Permet de voir tous les clients
+     */
     public static void voirClient(){
         Connection co = Model.startConnection();
         

@@ -18,6 +18,12 @@ import java.util.logging.Logger;
  * @author ichinator
  */
 public class ModelIngredient {
+    
+    /**
+     * Retourne true si l'ingrédient existe
+     * @param nom
+     * @return 
+     */
     public static boolean verifyIngredient(String nom){
         boolean ingredientInBase = false;
         
@@ -44,6 +50,13 @@ public class ModelIngredient {
         Model.closeConnection(co);
         return ingredientInBase;
     }
+    
+    /**
+     * Ajoute un ingrédient
+     * @param nom
+     * @param categorie
+     * @param prix 
+     */
     
     public static void addIngredient(String nom, String categorie, int prix){
         if(!verifyIngredient(nom)){
@@ -77,6 +90,11 @@ public class ModelIngredient {
         }
     }*/
     
+    /**
+     * Sélectionne des ingrédients en fonction d'une chaîne de caractères
+     * @param nom
+     * @return 
+     */
     public static ArrayList selectParticularIngredients(String nom){
         
         Connection co = Model.startConnection();
@@ -106,6 +124,12 @@ public class ModelIngredient {
        return listeIngredients; 
         
     }
+    
+    /**
+     * Sélectionne l'identifiant d'un ingrédient
+     * @param nom
+     * @return 
+     */
 
     static int selectId(String nom) {
         
