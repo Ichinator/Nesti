@@ -58,5 +58,25 @@ public class ModelCours {
         }
         return rs;
     }
+
+    public static void deleteCours(int idCours) {
+        Connection co = Model.startConnection();
+            
+            try{
+                String queryInsert = "DELETE FROM Cours WHERE id = ?";
+                
+                PreparedStatement stmt = co.prepareStatement(queryInsert);
+            
+                stmt.setInt(1, idCours);
+            
+                stmt.executeUpdate();
+                
+                
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            
+            Model.closeConnection(co);
+        }
     
 }

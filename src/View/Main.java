@@ -247,6 +247,9 @@ public class Main extends javax.swing.JFrame {
         jComboBoxAddCoursLieux = new javax.swing.JComboBox<>();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTableCours = new javax.swing.JTable();
+        jButtonModifyCours = new javax.swing.JButton();
+        jButtonDeleteCours = new javax.swing.JButton();
+        jTextFieldCours = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jTextFieldAddRecette = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -687,7 +690,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1266, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1267, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -778,6 +781,15 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane7.setViewportView(jTableCours);
 
+        jButtonModifyCours.setText("Modifier");
+
+        jButtonDeleteCours.setText("Supprimer");
+        jButtonDeleteCours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteCoursActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -785,27 +797,36 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelPlageHoraireInCours)
-                            .addComponent(jLabelRecetteInCours))
-                        .addGap(61, 61, 61)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBoxAddCoursRecette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxAddCoursPlageHoraire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(137, 137, 137)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelCuisinierInCours)
-                            .addComponent(jLabelLieuxInCours))
-                        .addGap(61, 61, 61)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxAddCoursCuisinier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelPlageHoraireInCours)
+                                    .addComponent(jLabelRecetteInCours))
+                                .addGap(61, 61, 61)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jComboBoxAddCoursRecette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxAddCoursPlageHoraire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(137, 137, 137)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelCuisinierInCours)
+                                    .addComponent(jLabelLieuxInCours))
+                                .addGap(61, 61, 61)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxAddCoursCuisinier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(305, 305, 305)
+                                .addComponent(jButtonAddCours)))
+                        .addGap(133, 133, 133)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(jButtonAddCours)))
-                .addGap(133, 133, 133)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonModifyCours)
+                            .addComponent(jButtonDeleteCours))
+                        .addGap(53, 53, 53)
+                        .addComponent(jTextFieldCours, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -829,10 +850,16 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(113, 113, 113)
                 .addComponent(jButtonAddCours)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonModifyCours)
+                    .addComponent(jTextFieldCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDeleteCours)
+                .addGap(114, 114, 114))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 258, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPanelCours.addTab("Cours", jPanel8);
@@ -1280,6 +1307,16 @@ public class Main extends javax.swing.JFrame {
         fillJTableUsers();
     }//GEN-LAST:event_jButtonDeleteUtilisateursActionPerformed
 
+    private void jButtonDeleteCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCoursActionPerformed
+        String id = jTextFieldCours.getText();
+        
+        int idCours = Integer.parseInt(id);
+        
+        model.ModelCours.deleteCours(idCours);
+        
+        fillJTableCours();
+    }//GEN-LAST:event_jButtonDeleteCoursActionPerformed
+
     /**
      * Retourne la clé d'un élément d'une map en fonction de sa valeur
      * @param <T>
@@ -1344,9 +1381,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddIngredientToRecette;
     private javax.swing.JButton jButtonAddRecette;
     private javax.swing.JButton jButtonDeleteCategory;
+    private javax.swing.JButton jButtonDeleteCours;
     private javax.swing.JButton jButtonDeleteIngredient;
     private javax.swing.JButton jButtonDeleteUtilisateurs;
     private javax.swing.JButton jButtonModifyCategory;
+    private javax.swing.JButton jButtonModifyCours;
     private javax.swing.JButton jButtonModifyIngredient;
     private javax.swing.JButton jButtonSearchCategory;
     private javax.swing.JButton jButtonSearchUsers;
@@ -1417,6 +1456,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAddRecette;
     private javax.swing.JTextField jTextFieldAddVilleUser;
     private javax.swing.JTextField jTextFieldChooseCategorieIngredient;
+    private javax.swing.JTextField jTextFieldCours;
     private javax.swing.JTextField jTextFieldDeleteUtilisateurs;
     private javax.swing.JTextField jTextFieldListIngredients;
     private javax.swing.JTextField jTextFieldPrixIngredient;
