@@ -176,4 +176,50 @@ public class ModelIngredient {
         
         return rs;
     }
+    
+    public static void modifyIngredient(int idIng, String nom, int prix){
+        if(verifyIngredient(nom)){
+            System.out.println("Passe le if");
+            Connection co = Model.startConnection();
+            
+            try{
+                String queryInsert = "UPDATE Ingredients SET nom = ?, prix = ? WHERE idIng = ?";
+                
+                PreparedStatement stmt = co.prepareStatement(queryInsert);
+            
+                
+                stmt.setString(1, nom);
+                stmt.setInt(2, prix);
+                stmt.setInt(3, idIng);
+            
+                stmt.executeUpdate();
+                
+                
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            
+            Model.closeConnection(co);
+        }
+    }
+
+    public static void deleteIngredient(int idIng) {
+            Connection co = Model.startConnection();
+            
+            try{
+                String queryInsert = "DELETE FROM Ingredients WHERE idIng = ?";
+                
+                PreparedStatement stmt = co.prepareStatement(queryInsert);
+            
+                stmt.setInt(1, idIng);
+            
+                stmt.executeUpdate();
+                
+                
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+            
+            Model.closeConnection(co);
+        }
 }

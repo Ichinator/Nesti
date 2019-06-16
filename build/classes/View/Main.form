@@ -255,24 +255,19 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
-                              <Component id="jButtonModifyIngredient" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                              <Component id="jButtonAddIngredient" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                              <Component id="jButtonUpdateIngredient" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelChooseCategorieIngredient" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldChooseCategorieIngredient" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jLabelPrixIngredient" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabelNomIngrédient" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabelChooseCategorieIngredient" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jButtonAddIngredient" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldChooseCategorieIngredient" min="-2" pref="179" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -282,8 +277,17 @@
                                   <Component id="jTextFieldPrixIngredient" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jButtonModifyIngredient" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonDeleteIngredient" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Component id="jTextFieldAddIngredientId" min="-2" pref="57" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="118" max="32767" attributes="0"/>
+                      <EmptySpace pref="197" max="32767" attributes="0"/>
                       <Component id="jScrollPane6" min="-2" pref="596" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
@@ -308,13 +312,16 @@
                           <Component id="jComboBoxChooseCategorieIngredient" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldChooseCategorieIngredient" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jButtonAddIngredient" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="jButtonModifyIngredient" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonAddIngredient" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonModifyIngredient" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonUpdateIngredient" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAddIngredientId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonDeleteIngredient" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -375,16 +382,19 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonModifyIngredient">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Modifier l&apos;iingr&#xe9;dient"/>
+                <Property name="text" type="java.lang.String" value="Modifier l&apos;ingr&#xe9;dient"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonModifyIngredientActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonUpdateIngredient">
+            <Component class="javax.swing.JButton" name="jButtonDeleteIngredient">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Supprimer l&apos;ingr&#xe9;dient"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDeleteIngredientActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane6">
               <AuxValues>
@@ -434,6 +444,8 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JTextField" name="jTextFieldAddIngredientId">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel5">
