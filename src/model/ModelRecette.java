@@ -163,7 +163,10 @@ public class ModelRecette {
         return idRecette;
     }
     
-    
+    /**
+     * Sélectionne toutes les recettes
+     * @return 
+     */
     public static Map selectAllRecettes() {
         Connection co = Model.startConnection();
         Map mapRecettes = new HashMap();

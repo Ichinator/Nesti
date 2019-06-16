@@ -151,4 +151,43 @@ public class ModelCategorie {
         
         return listesCategories;
     }
+
+    public static void updateCategory(String nomCategory, String descriptionCategory) {
+        Connection co = Model.startConnection();
+        
+        
+        try{
+            String queryUpdate = "UPDATE Categorie SET description = ? WHERE nomCategorie = ?";
+            
+            PreparedStatement stmt = co.prepareStatement(queryUpdate);
+            
+            stmt.setString(1, descriptionCategory);
+            stmt.setString(2, nomCategory);
+            
+                    
+            stmt.executeUpdate();
+            
+            //Model.closeConnection(co);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public static void deleteCategory(String nomCategory) {
+        Connection co = Model.startConnection();
+        
+        try{
+            String queryUpdate = "DELETE FROM Categorie WHERE nomCategorie = ?";
+            
+            PreparedStatement stmt = co.prepareStatement(queryUpdate);
+            stmt.setString(1, nomCategory);
+            
+                    
+            stmt.executeUpdate();
+            
+            //Model.closeConnection(co);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 }

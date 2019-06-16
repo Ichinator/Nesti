@@ -19,6 +19,10 @@ import java.util.Map;
  */
 public class ModelPlageHoraire {
 
+    /**
+     * Sélectionne toutes les plages horaires
+     * @return 
+     */
     public static ArrayList<String> selectAllPlageHoraire() {
         Connection co = Model.startConnection();
         

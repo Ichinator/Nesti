@@ -18,6 +18,10 @@ import java.util.Map;
  */
 public class ModelLieux {
 
+    /**
+     * Sélectionne tous les lieux
+     * @return 
+     */
     public static Map selectAllLieux() {
         Connection co = Model.startConnection();
         Map mapLieux = new HashMap();

@@ -15,6 +15,13 @@ import java.sql.SQLException;
  */
 public class ModelCours {
 
+    /**
+     * Ajoute un cours
+     * @param idCuisinier
+     * @param idRecette
+     * @param plageHoraire
+     * @param idLieux 
+     */
     public static void addCours(int idCuisinier, int idRecette, String plageHoraire, int idLieux) {
         
         Connection co = Model.startConnection();

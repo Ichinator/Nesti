@@ -4,9 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/ichinator/NetBeansProjects/Nesti/src/View/ConnectFrame.java</file>
-            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/View/Main.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelLieux.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelCategorie.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelUtilisateurs.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelClient.java</file>
             <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelIngredient.java</file>
             <file>file:/home/ichinator/NetBeansProjects/Nesti/src/nesti/Nesti.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelPlageHoraire.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelAdmin.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/View/Main.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelRecette.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/PlageHoraire.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/Model.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelCours.java</file>
+            <file>file:/home/ichinator/NetBeansProjects/Nesti/src/model/ModelVille.java</file>
         </group>
     </open-files>
 </project-private>

@@ -111,7 +111,7 @@ public class ModelUtilisateurs {
      * Vérifie la présence d'un utilisateur
      * @param nom
      * @param prenom
-     * @return 
+     * @return
      */
     public static boolean verifyUser(String nom, String prenom){
         boolean userInBase = false;
@@ -277,6 +277,10 @@ public class ModelUtilisateurs {
        
     }
 
+    /**
+     * Sélectionne tous les cuisiniers
+     * @return 
+     */
     public static Map selectAllCuisiniers() {
         Connection co = Model.startConnection();
         Map mapCuisiniers = new HashMap();

@@ -108,6 +108,9 @@ public class Main extends javax.swing.JFrame {
         this.mapCuisiniers.forEach( (k,v) -> jComboBoxAddCoursCuisinier.addItem(v.toString()));
     }
     
+    /**
+     * Remplit la jComboBoxAddCoursRecette
+     */
     private void fillJComboBoxAddCoursRecette(){
         jComboBoxAddCoursRecette.removeAllItems();
          
@@ -116,6 +119,9 @@ public class Main extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Remplit la jComboBoxAddCoursPlageHoraire
+     */
     private void fillJComboBoxAddCoursPlageHoraire(){
         jComboBoxAddCoursPlageHoraire.removeAllItems();
          
@@ -124,6 +130,9 @@ public class Main extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Remplit la jComboBoxAddCoursLieux
+     */
     private void fillJComboBoxAddCoursLieux(){
         jComboBoxAddCoursLieux.removeAllItems();
         this.mapLieux = model.ModelLieux.selectAllLieux();
@@ -151,6 +160,8 @@ public class Main extends javax.swing.JFrame {
         jTableCategory = new javax.swing.JTable();
         jTextFieldSearchCategory = new javax.swing.JTextField();
         jButtonSearchCategory = new javax.swing.JButton();
+        jButtonModifyCategory = new javax.swing.JButton();
+        jButtonDeleteCategory = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTextFieldAddRecette = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -263,6 +274,20 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButtonModifyCategory.setText("Modifier");
+        jButtonModifyCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifyCategoryActionPerformed(evt);
+            }
+        });
+
+        jButtonDeleteCategory.setText("Supprimer");
+        jButtonDeleteCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteCategoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -271,37 +296,44 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jTextFieldSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jButtonSearchCategory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAddCategory)
-                .addGap(189, 189, 189))
+                .addGap(189, 1125, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jButtonModifyCategory)
+                        .addGap(51, 51, 51)
+                        .addComponent(jButtonAddCategory)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButtonDeleteCategory)))
+                .addGap(137, 137, 137))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jTextFieldAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButtonAddCategory)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSearchCategory))
-                        .addContainerGap())))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchCategory))
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jTextFieldAddCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddCategory)
+                    .addComponent(jButtonModifyCategory)
+                    .addComponent(jButtonDeleteCategory))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanelCours.addTab("Les catégories", jPanel4);
@@ -1034,6 +1066,10 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonAddIngredientToRecetteActionPerformed
 
+    /**
+     * Récupère les identifiants du cuisinier, de la recette et du lieux en utilisant getKeyByValue() et appelle addCours()
+     * @param evt 
+     */
     private void jButtonAddCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCoursActionPerformed
         
         int idCuisinier = getKeyByValue(mapCuisiniers, jComboBoxAddCoursCuisinier.getSelectedItem());
@@ -1054,6 +1090,29 @@ public class Main extends javax.swing.JFrame {
     private void jTextFieldListIngredientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldListIngredientsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldListIngredientsActionPerformed
+
+    private void jButtonModifyCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifyCategoryActionPerformed
+        String nomCategory = jTextFieldAddCategory.getText();
+        String descriptionCategory = jTextAreaAddCategory.getText();
+        
+        model.ModelCategorie.updateCategory(nomCategory, descriptionCategory);
+        
+        fillJTableCategory();
+
+        jTextAreaAddCategory.setText("");
+        jTextFieldAddCategory.setText("");
+    }//GEN-LAST:event_jButtonModifyCategoryActionPerformed
+
+    private void jButtonDeleteCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCategoryActionPerformed
+        String nomCategory = jTextFieldAddCategory.getText();
+        
+        model.ModelCategorie.deleteCategory(nomCategory);
+        
+        fillJTableCategory();
+
+        jTextAreaAddCategory.setText("");
+        jTextFieldAddCategory.setText("");
+    }//GEN-LAST:event_jButtonDeleteCategoryActionPerformed
 
     /**
      * Retourne la clé d'un élément d'une map en fonction de sa valeur
@@ -1118,6 +1177,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddIngredient;
     private javax.swing.JButton jButtonAddIngredientToRecette;
     private javax.swing.JButton jButtonAddRecette;
+    private javax.swing.JButton jButtonDeleteCategory;
+    private javax.swing.JButton jButtonModifyCategory;
     private javax.swing.JButton jButtonSearchCategory;
     private javax.swing.JButton jButtonSearchUsers;
     private javax.swing.JCheckBox jCheckBoxAdmin;
