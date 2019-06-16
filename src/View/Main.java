@@ -59,6 +59,10 @@ public class Main extends javax.swing.JFrame {
         fillJTableCategory();
 
         fillJTableUsers();
+        
+        fillJTableRecettes();
+        
+        fillJTableIngredients();
 
         jComboBoxAddVilleUser.removeAllItems();
         jComboBoxChooseCategorieIngredient.removeAllItems();
@@ -95,6 +99,18 @@ public class Main extends javax.swing.JFrame {
         // On remplit jTableCategory avec le ResultSet
         ResultSet resultAllUsers = model.ModelUtilisateurs.selectAllUser();
         jTableUsers.setModel(DbUtils.resultSetToTableModel(resultAllUsers));
+    }
+    
+    private void fillJTableRecettes() {
+        // On remplit jTableRecettes avec le ResultSet
+        ResultSet result = model.ModelRecette.selectAllRecettesJTable();
+        jTableRecettes.setModel(DbUtils.resultSetToTableModel(result));
+    }
+    
+    private void fillJTableIngredients() {
+        // On remplit jTableRecettes avec le ResultSet
+        ResultSet result = model.ModelIngredient.selectAllIngredients();
+        jTableIngredients.setModel(DbUtils.resultSetToTableModel(result));
     }
     
     /**
@@ -162,15 +178,6 @@ public class Main extends javax.swing.JFrame {
         jButtonSearchCategory = new javax.swing.JButton();
         jButtonModifyCategory = new javax.swing.JButton();
         jButtonDeleteCategory = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jTextFieldAddRecette = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextAreaAddRecette = new javax.swing.JTextArea();
-        jButtonAddRecette = new javax.swing.JButton();
-        jTextFieldListIngredients = new javax.swing.JTextField();
-        jComboBoxListIngredients = new javax.swing.JComboBox<>();
-        jButtonAddIngredientToRecette = new javax.swing.JButton();
-        jLabelListIngredients = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabelNomIngrédient = new javax.swing.JLabel();
         jButtonAddIngredient = new javax.swing.JButton();
@@ -180,7 +187,10 @@ public class Main extends javax.swing.JFrame {
         jTextFieldChooseCategorieIngredient = new javax.swing.JTextField();
         jLabelPrixIngredient = new javax.swing.JLabel();
         jTextFieldPrixIngredient = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
+        jButtonModifyIngredient = new javax.swing.JButton();
+        jButtonUpdateIngredient = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableIngredients = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jTextFieldAddVilleUser = new javax.swing.JTextField();
         jComboBoxAddVilleUser = new javax.swing.JComboBox<>();
@@ -225,6 +235,17 @@ public class Main extends javax.swing.JFrame {
         jComboBoxAddCoursPlageHoraire = new javax.swing.JComboBox<>();
         jComboBoxAddCoursCuisinier = new javax.swing.JComboBox<>();
         jComboBoxAddCoursLieux = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jTextFieldAddRecette = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextAreaAddRecette = new javax.swing.JTextArea();
+        jButtonAddRecette = new javax.swing.JButton();
+        jTextFieldListIngredients = new javax.swing.JTextField();
+        jComboBoxListIngredients = new javax.swing.JComboBox<>();
+        jButtonAddIngredientToRecette = new javax.swing.JButton();
+        jLabelListIngredients = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableRecettes = new javax.swing.JTable();
 
         jButton2.setText("jButton2");
 
@@ -234,11 +255,11 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1499, Short.MAX_VALUE)
+            .addGap(0, 1583, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGap(0, 754, Short.MAX_VALUE)
         );
 
         jTabbedPanelCours.addTab("Accueil", jPanel1);
@@ -296,9 +317,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jTextFieldSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jButtonSearchCategory)
-                .addGap(189, 1125, Short.MAX_VALUE))
+                .addGap(189, 1209, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1032, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -317,7 +338,7 @@ public class Main extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
                 .addGap(19, 19, 19)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -337,85 +358,6 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPanelCours.addTab("Les catégories", jPanel4);
-
-        jTextAreaAddRecette.setColumns(20);
-        jTextAreaAddRecette.setRows(5);
-        jScrollPane4.setViewportView(jTextAreaAddRecette);
-
-        jButtonAddRecette.setText("Ajouter la recette");
-        jButtonAddRecette.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddRecetteActionPerformed(evt);
-            }
-        });
-
-        jTextFieldListIngredients.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldListIngredientsActionPerformed(evt);
-            }
-        });
-        jTextFieldListIngredients.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldListIngredientsKeyPressed(evt);
-            }
-        });
-
-        jComboBoxListIngredients.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButtonAddIngredientToRecette.setText("Ajouter l'ingrédient");
-        jButtonAddIngredientToRecette.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddIngredientToRecetteActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(jTextFieldAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addComponent(jButtonAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jButtonAddIngredientToRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jTextFieldListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(334, 334, 334)
-                        .addComponent(jComboBoxListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabelListIngredients, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jTextFieldAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelListIngredients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))
-                .addGap(58, 58, 58)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddIngredientToRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-        );
-
-        jTabbedPanelCours.addTab("Les recettes", jPanel3);
 
         jLabelNomIngrédient.setText("Nom de l'ingrédient");
 
@@ -443,12 +385,41 @@ public class Main extends javax.swing.JFrame {
 
         jLabelPrixIngredient.setText("Prix");
 
+        jButtonModifyIngredient.setText("Modifier l'iingrédient");
+        jButtonModifyIngredient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifyIngredientActionPerformed(evt);
+            }
+        });
+
+        jButtonUpdateIngredient.setText("Supprimer l'ingrédient");
+
+        jTableIngredients.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTableIngredients);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(jButtonModifyIngredient)
+                        .addGap(64, 64, 64)
+                        .addComponent(jButtonAddIngredient)
+                        .addGap(89, 89, 89)
+                        .addComponent(jButtonUpdateIngredient))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(215, 215, 215)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,11 +434,10 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldAddIngrédient)
                             .addComponent(jComboBoxChooseCategorieIngredient, 0, 143, Short.MAX_VALUE)
-                            .addComponent(jTextFieldPrixIngredient)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(460, 460, 460)
-                        .addComponent(jButtonAddIngredient)))
-                .addContainerGap(731, Short.MAX_VALUE))
+                            .addComponent(jTextFieldPrixIngredient))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,30 +450,24 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPrixIngredient)
                     .addComponent(jTextFieldPrixIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelChooseCategorieIngredient)
                     .addComponent(jComboBoxChooseCategorieIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldChooseCategorieIngredient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
-                .addComponent(jButtonAddIngredient)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddIngredient)
+                    .addComponent(jButtonModifyIngredient)
+                    .addComponent(jButtonUpdateIngredient))
                 .addGap(278, 278, 278))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPanelCours.addTab("Les ingrédients", jPanel6);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1499, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
-        );
-
-        jTabbedPanelCours.addTab("Les cours", jPanel7);
 
         jTextFieldAddVilleUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -603,7 +567,7 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jTextFieldAddVilleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(202, 202, 202)
                         .addComponent(jComboBoxAddVilleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(466, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,7 +582,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldAddAdminJour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldAddAdminMois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -694,7 +658,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1085, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1127, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -705,7 +669,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBoxAdmin)
-                            .addComponent(jButtonSearchUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                            .addComponent(jButtonSearchUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                             .addComponent(jCheckBoxCuisinier)
                             .addComponent(jCheckBoxClient)
                             .addComponent(jCheckBoxAll)
@@ -732,7 +696,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxNoOne)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
         );
 
         jTabbedPanelCours.addTab("Les utilisateurs", jPanel2);
@@ -786,7 +750,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(475, 475, 475)
                         .addComponent(jButtonAddCours)))
-                .addContainerGap(635, Short.MAX_VALUE))
+                .addContainerGap(719, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -805,10 +769,110 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(163, 163, 163)
                 .addComponent(jButtonAddCours)
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         jTabbedPanelCours.addTab("Cours", jPanel8);
+
+        jTextAreaAddRecette.setColumns(20);
+        jTextAreaAddRecette.setRows(5);
+        jScrollPane4.setViewportView(jTextAreaAddRecette);
+
+        jButtonAddRecette.setText("Ajouter la recette");
+        jButtonAddRecette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddRecetteActionPerformed(evt);
+            }
+        });
+
+        jTextFieldListIngredients.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldListIngredientsActionPerformed(evt);
+            }
+        });
+        jTextFieldListIngredients.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldListIngredientsKeyPressed(evt);
+            }
+        });
+
+        jComboBoxListIngredients.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButtonAddIngredientToRecette.setText("Ajouter l'ingrédient");
+        jButtonAddIngredientToRecette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddIngredientToRecetteActionPerformed(evt);
+            }
+        });
+
+        jTableRecettes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTableRecettes);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(jTextFieldAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(169, 169, 169)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jButtonAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(512, 512, 512)
+                                        .addComponent(jButtonAddIngredientToRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jTextFieldListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(334, 334, 334)
+                                        .addComponent(jComboBoxListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1078, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelListIngredients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jTextFieldAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelListIngredients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxListIngredients, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAddRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonAddIngredientToRecette, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jTabbedPanelCours.addTab("Les recettes", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -828,24 +892,54 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Ajoute un ingrédient
+     * Récupère les identifiants du cuisinier, de la recette et du lieux en utilisant getKeyByValue() et appelle addCours()
      * @param evt 
      */
-    private void jButtonAddIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddIngredientActionPerformed
-        // TODO add your handling code here:
-        String categorie = (String)jComboBoxChooseCategorieIngredient.getSelectedItem();
-        String nom = jTextFieldAddIngrédient.getText();
-        String prix = jTextFieldPrixIngredient.getText();
-        
-        try{
-            int prixInt = Integer.parseInt(prix);
-            model.ModelIngredient.addIngredient(nom, categorie, prixInt);
-        }catch(Exception e){
-            System.out.println("Erreur lorsque l'on ajoute un ingrédient : "+e);
-        }
-        
-        
-    }//GEN-LAST:event_jButtonAddIngredientActionPerformed
+    private void jButtonAddCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCoursActionPerformed
+
+        int idCuisinier = getKeyByValue(mapCuisiniers, jComboBoxAddCoursCuisinier.getSelectedItem());
+        int idRecette = getKeyByValue(mapRecettes, jComboBoxAddCoursRecette.getSelectedItem());
+        String plageHoraire = jComboBoxAddCoursPlageHoraire.getSelectedItem().toString();
+
+        int idLieux = getKeyByValue(mapLieux, jComboBoxAddCoursLieux.getSelectedItem());
+
+        model.ModelCours.addCours(idCuisinier, idRecette, plageHoraire, idLieux);
+
+    }//GEN-LAST:event_jButtonAddCoursActionPerformed
+
+    /**
+     * Déselectionne tous les champs
+     * @param evt 
+     */
+    private void jCheckBoxNoOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNoOneActionPerformed
+        jCheckBoxAdmin.setSelected(false);
+        jCheckBoxClient.setSelected(false);
+        jCheckBoxCuisinier.setSelected(false);
+        jCheckBoxAll.setSelected(false);
+    }//GEN-LAST:event_jCheckBoxNoOneActionPerformed
+
+    /**
+     * Sélectionne tous les champs
+     * @param evt 
+     */
+    private void jCheckBoxAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAllActionPerformed
+        jCheckBoxAdmin.setSelected(true);
+        jCheckBoxClient.setSelected(true);
+        jCheckBoxCuisinier.setSelected(true);
+        jCheckBoxNoOne.setSelected(false);
+    }//GEN-LAST:event_jCheckBoxAllActionPerformed
+
+    /**
+     * Permet d'afficher des utilisateurs précis dans le tableau
+     * @param evt 
+     */
+    private void jButtonSearchUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchUsersActionPerformed
+        String nom = jTextFieldSearchUsers.getText();
+        String prenom = jTextField1.getText();
+
+        ResultSet resultAllUsers = model.ModelUtilisateurs.selectParticularUsersWithConditions(nom, prenom, jCheckBoxClient.isSelected(), jCheckBoxCuisinier.isSelected(), jCheckBoxAdmin.isSelected());
+        jTableUsers.setModel(DbUtils.resultSetToTableModel(resultAllUsers));
+    }//GEN-LAST:event_jButtonSearchUsersActionPerformed
 
     private void jTextFieldAddAdminJourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAddAdminJourActionPerformed
         // TODO add your handling code here:
@@ -944,38 +1038,116 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldAddVilleUserActionPerformed
 
     /**
-     * Déselectionne tous les champs
+     * Lie une catégorie avec un ingrédient
      * @param evt 
      */
-    private void jCheckBoxNoOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNoOneActionPerformed
-        jCheckBoxAdmin.setSelected(false);
-        jCheckBoxClient.setSelected(false);
-        jCheckBoxCuisinier.setSelected(false);
-        jCheckBoxAll.setSelected(false);
-    }//GEN-LAST:event_jCheckBoxNoOneActionPerformed
+    private void jTextFieldChooseCategorieIngredientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldChooseCategorieIngredientKeyPressed
+        // TODO add your handling code here:
+        jComboBoxChooseCategorieIngredient.removeAllItems();
+        int longueurChaine = jTextFieldChooseCategorieIngredient.getText().length();
+        if (longueurChaine >= 3) {
+            ArrayList result = model.ModelCategorie.selectCategorie(jTextFieldChooseCategorieIngredient.getText());
+
+            for (int i = 0; i < result.size(); i++) {
+                jComboBoxChooseCategorieIngredient.addItem((String) result.get(i));
+            }
+        }
+    }//GEN-LAST:event_jTextFieldChooseCategorieIngredientKeyPressed
+
+    private void jTextFieldChooseCategorieIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldChooseCategorieIngredientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldChooseCategorieIngredientActionPerformed
 
     /**
-     * Sélectionne tous les champs
+     * Ajoute un ingrédient
      * @param evt 
      */
-    private void jCheckBoxAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAllActionPerformed
-        jCheckBoxAdmin.setSelected(true);
-        jCheckBoxClient.setSelected(true);
-        jCheckBoxCuisinier.setSelected(true);
-        jCheckBoxNoOne.setSelected(false);
-    }//GEN-LAST:event_jCheckBoxAllActionPerformed
+    private void jButtonAddIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddIngredientActionPerformed
+        // TODO add your handling code here:
+        String categorie = (String)jComboBoxChooseCategorieIngredient.getSelectedItem();
+        String nom = jTextFieldAddIngrédient.getText();
+        String prix = jTextFieldPrixIngredient.getText();
+
+        try{
+            int prixInt = Integer.parseInt(prix);
+            model.ModelIngredient.addIngredient(nom, categorie, prixInt);
+        }catch(Exception e){
+            System.out.println("Erreur lorsque l'on ajoute un ingrédient : "+e);
+        }
+
+    }//GEN-LAST:event_jButtonAddIngredientActionPerformed
+
+    private void jButtonAddIngredientToRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddIngredientToRecetteActionPerformed
+        // TODO add your handling code here:
+        String ingredientsInRecette = "";
+
+        jLabelListIngredients.setText("");
+        if(!arrayListIngredients.contains((String)jComboBoxListIngredients.getSelectedItem())){
+            arrayListIngredients.add((String)jComboBoxListIngredients.getSelectedItem());
+        }
+        System.out.println(arrayListIngredients.size());
+
+        for(int i = 0; i < arrayListIngredients.size(); i++){
+
+            ingredientsInRecette += arrayListIngredients.get(i)+" , ";
+        }
+
+        jLabelListIngredients.setText(ingredientsInRecette);
+
+    }//GEN-LAST:event_jButtonAddIngredientToRecetteActionPerformed
+
+    private void jTextFieldListIngredientsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldListIngredientsKeyPressed
+        // TODO add your handling code here:
+        jComboBoxListIngredients.removeAllItems();
+        ArrayList result = model.ModelIngredient.selectParticularIngredients(jTextFieldListIngredients.getText());
+
+        for (int i = 0; i < result.size(); i++) {
+            jComboBoxListIngredients.addItem((String) result.get(i));
+        }
+    }//GEN-LAST:event_jTextFieldListIngredientsKeyPressed
+
+    private void jTextFieldListIngredientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldListIngredientsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldListIngredientsActionPerformed
 
     /**
-     * Permet d'afficher des utilisateurs précis dans le tableau
+     * Ajoute une recette
      * @param evt 
      */
-    private void jButtonSearchUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchUsersActionPerformed
-        String nom = jTextFieldSearchUsers.getText();
-        String prenom = jTextField1.getText();
+    private void jButtonAddRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddRecetteActionPerformed
+        // TODO add your handling code here:
+        String nom = jTextFieldAddRecette.getText();
+        String description = jTextAreaAddRecette.getText();
 
-        ResultSet resultAllUsers = model.ModelUtilisateurs.selectParticularUsersWithConditions(nom, prenom, jCheckBoxClient.isSelected(), jCheckBoxCuisinier.isSelected(), jCheckBoxAdmin.isSelected());
-        jTableUsers.setModel(DbUtils.resultSetToTableModel(resultAllUsers));
-    }//GEN-LAST:event_jButtonSearchUsersActionPerformed
+        System.err.println(arrayListIngredients);
+
+        model.ModelRecette.addRecette(nom, description);
+
+        model.ModelRecette.addRecetteIngredients(nom, arrayListIngredients);
+    }//GEN-LAST:event_jButtonAddRecetteActionPerformed
+
+    private void jButtonDeleteCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCategoryActionPerformed
+        String nomCategory = jTextFieldAddCategory.getText();
+
+        model.ModelCategorie.deleteCategory(nomCategory);
+
+        fillJTableCategory();
+
+        jTextAreaAddCategory.setText("");
+        jTextFieldAddCategory.setText("");
+    }//GEN-LAST:event_jButtonDeleteCategoryActionPerformed
+
+    private void jButtonModifyCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifyCategoryActionPerformed
+        String nomCategory = jTextFieldAddCategory.getText();
+        String descriptionCategory = jTextAreaAddCategory.getText();
+
+        model.ModelCategorie.updateCategory(nomCategory, descriptionCategory);
+
+        fillJTableCategory();
+
+        jTextAreaAddCategory.setText("");
+        jTextFieldAddCategory.setText("");
+    }//GEN-LAST:event_jButtonModifyCategoryActionPerformed
 
     /**
      * Affiche une catégorie précise dans le tableau
@@ -1004,115 +1176,9 @@ public class Main extends javax.swing.JFrame {
         jTextFieldAddCategory.setText("");
     }//GEN-LAST:event_jButtonAddCategoryActionPerformed
 
-    /**
-     * Lie une catégorie avec un ingrédient
-     * @param evt 
-     */
-    private void jTextFieldChooseCategorieIngredientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldChooseCategorieIngredientKeyPressed
-        // TODO add your handling code here:
-        jComboBoxChooseCategorieIngredient.removeAllItems();
-        int longueurChaine = jTextFieldChooseCategorieIngredient.getText().length();
-        if (longueurChaine >= 3) {
-            ArrayList result = model.ModelCategorie.selectCategorie(jTextFieldChooseCategorieIngredient.getText());
-
-            for (int i = 0; i < result.size(); i++) {
-                jComboBoxChooseCategorieIngredient.addItem((String) result.get(i));
-            }
-        }
-    }//GEN-LAST:event_jTextFieldChooseCategorieIngredientKeyPressed
-
-    /**
-     * Ajoute une recette
-     * @param evt 
-     */
-    private void jButtonAddRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddRecetteActionPerformed
-        // TODO add your handling code here:
-        String nom = jTextFieldAddRecette.getText();
-        String description = jTextAreaAddRecette.getText();
+    private void jButtonModifyIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifyIngredientActionPerformed
         
-        System.err.println(arrayListIngredients);
-        
-        model.ModelRecette.addRecette(nom, description);
-        
-        model.ModelRecette.addRecetteIngredients(nom, arrayListIngredients);
-    }//GEN-LAST:event_jButtonAddRecetteActionPerformed
-
-    private void jTextFieldListIngredientsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldListIngredientsKeyPressed
-        // TODO add your handling code here:
-        jComboBoxListIngredients.removeAllItems();
-            ArrayList result = model.ModelIngredient.selectParticularIngredients(jTextFieldListIngredients.getText());
-
-            for (int i = 0; i < result.size(); i++) {
-                jComboBoxListIngredients.addItem((String) result.get(i));
-            }
-    }//GEN-LAST:event_jTextFieldListIngredientsKeyPressed
-
-    private void jButtonAddIngredientToRecetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddIngredientToRecetteActionPerformed
-        // TODO add your handling code here:
-        String ingredientsInRecette = "";
-        
-        jLabelListIngredients.setText("");
-        if(!arrayListIngredients.contains((String)jComboBoxListIngredients.getSelectedItem())){
-            arrayListIngredients.add((String)jComboBoxListIngredients.getSelectedItem());
-        }
-        System.out.println(arrayListIngredients.size());
-        
-        for(int i = 0; i < arrayListIngredients.size(); i++){
-            
-            ingredientsInRecette += arrayListIngredients.get(i)+" , ";
-            }
-        
-        jLabelListIngredients.setText(ingredientsInRecette);
-        
-    }//GEN-LAST:event_jButtonAddIngredientToRecetteActionPerformed
-
-    /**
-     * Récupère les identifiants du cuisinier, de la recette et du lieux en utilisant getKeyByValue() et appelle addCours()
-     * @param evt 
-     */
-    private void jButtonAddCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddCoursActionPerformed
-        
-        int idCuisinier = getKeyByValue(mapCuisiniers, jComboBoxAddCoursCuisinier.getSelectedItem());
-        int idRecette = getKeyByValue(mapRecettes, jComboBoxAddCoursRecette.getSelectedItem());
-        String plageHoraire = jComboBoxAddCoursPlageHoraire.getSelectedItem().toString();
-        
-        
-        int idLieux = getKeyByValue(mapLieux, jComboBoxAddCoursLieux.getSelectedItem());
-        
-        model.ModelCours.addCours(idCuisinier, idRecette, plageHoraire, idLieux);
-        
-    }//GEN-LAST:event_jButtonAddCoursActionPerformed
-
-    private void jTextFieldChooseCategorieIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldChooseCategorieIngredientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldChooseCategorieIngredientActionPerformed
-
-    private void jTextFieldListIngredientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldListIngredientsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldListIngredientsActionPerformed
-
-    private void jButtonModifyCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifyCategoryActionPerformed
-        String nomCategory = jTextFieldAddCategory.getText();
-        String descriptionCategory = jTextAreaAddCategory.getText();
-        
-        model.ModelCategorie.updateCategory(nomCategory, descriptionCategory);
-        
-        fillJTableCategory();
-
-        jTextAreaAddCategory.setText("");
-        jTextFieldAddCategory.setText("");
-    }//GEN-LAST:event_jButtonModifyCategoryActionPerformed
-
-    private void jButtonDeleteCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteCategoryActionPerformed
-        String nomCategory = jTextFieldAddCategory.getText();
-        
-        model.ModelCategorie.deleteCategory(nomCategory);
-        
-        fillJTableCategory();
-
-        jTextAreaAddCategory.setText("");
-        jTextFieldAddCategory.setText("");
-    }//GEN-LAST:event_jButtonDeleteCategoryActionPerformed
+    }//GEN-LAST:event_jButtonModifyIngredientActionPerformed
 
     /**
      * Retourne la clé d'un élément d'une map en fonction de sa valeur
@@ -1179,8 +1245,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddRecette;
     private javax.swing.JButton jButtonDeleteCategory;
     private javax.swing.JButton jButtonModifyCategory;
+    private javax.swing.JButton jButtonModifyIngredient;
     private javax.swing.JButton jButtonSearchCategory;
     private javax.swing.JButton jButtonSearchUsers;
+    private javax.swing.JButton jButtonUpdateIngredient;
     private javax.swing.JCheckBox jCheckBoxAdmin;
     private javax.swing.JCheckBox jCheckBoxAll;
     private javax.swing.JCheckBox jCheckBoxClient;
@@ -1215,7 +1283,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPasswordField jPasswordFieldAddAdminPassword;
     private javax.swing.JPasswordField jPasswordFieldAddAdminPasswordConfirm;
@@ -1223,9 +1290,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPanelCours;
     private javax.swing.JTable jTableCategory;
+    private javax.swing.JTable jTableIngredients;
+    private javax.swing.JTable jTableRecettes;
     private javax.swing.JTable jTableUsers;
     private javax.swing.JTextArea jTextAreaAddCategory;
     private javax.swing.JTextArea jTextAreaAddRecette;

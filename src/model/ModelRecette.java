@@ -72,6 +72,23 @@ public class ModelRecette {
         
         return listeRecettes;
     }
+    
+    public static ResultSet selectAllRecettesJTable(){
+        Connection co = Model.startConnection();
+        ResultSet rs = null;
+        
+        try{
+            Statement stmt = co.createStatement();
+            String selectQuery = "SELECT * FROM Recette";
+            
+            rs = stmt.executeQuery(selectQuery);
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(ModelRecette.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+    }
 
     /**
      * Ajoute une recette

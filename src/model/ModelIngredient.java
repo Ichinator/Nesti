@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -157,5 +158,22 @@ public class ModelIngredient {
         }
         
         return idIngredient;
+    }
+
+    public static ResultSet selectAllIngredients() {
+        Connection co = Model.startConnection();
+        ResultSet rs = null;
+        
+        try{
+            Statement stmt = co.createStatement();
+            String selectQuery = "SELECT * FROM Ingredients";
+            
+            rs = stmt.executeQuery(selectQuery);
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(ModelRecette.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
     }
 }
