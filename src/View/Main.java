@@ -226,6 +226,8 @@ public class Main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableUsers = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
+        jButtonDeleteUtilisateurs = new javax.swing.JButton();
+        jTextFieldDeleteUtilisateurs = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabelRecetteInCours = new javax.swing.JLabel();
         jLabelCuisinierInCours = new javax.swing.JLabel();
@@ -664,6 +666,13 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTableUsers);
 
+        jButtonDeleteUtilisateurs.setText("Supprimer");
+        jButtonDeleteUtilisateurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteUtilisateursActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -679,12 +688,20 @@ public class Main extends javax.swing.JFrame {
                         .addGap(103, 103, 103))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxAdmin)
-                            .addComponent(jButtonSearchUsers, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-                            .addComponent(jCheckBoxCuisinier)
-                            .addComponent(jCheckBoxClient)
-                            .addComponent(jCheckBoxAll)
-                            .addComponent(jCheckBoxNoOne))
+                            .addComponent(jButtonSearchUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBoxAdmin)
+                                    .addComponent(jCheckBoxCuisinier)
+                                    .addComponent(jCheckBoxClient)
+                                    .addComponent(jCheckBoxAll)
+                                    .addComponent(jCheckBoxNoOne)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(74, 74, 74)
+                                        .addComponent(jButtonDeleteUtilisateurs)
+                                        .addGap(75, 75, 75)
+                                        .addComponent(jTextFieldDeleteUtilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -706,6 +723,10 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jCheckBoxAll)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBoxNoOne)
+                .addGap(97, 97, 97)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeleteUtilisateurs)
+                    .addComponent(jTextFieldDeleteUtilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
         );
@@ -1218,6 +1239,16 @@ public class Main extends javax.swing.JFrame {
         fillJTableIngredients();
     }//GEN-LAST:event_jButtonDeleteIngredientActionPerformed
 
+    private void jButtonDeleteUtilisateursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteUtilisateursActionPerformed
+        String id = jTextFieldDeleteUtilisateurs.getText();
+        
+        int idUser = Integer.parseInt(id);
+        
+        model.ModelUtilisateurs.deleteUtilisateur(idUser);
+        
+        fillJTableUsers();
+    }//GEN-LAST:event_jButtonDeleteUtilisateursActionPerformed
+
     /**
      * Retourne la clé d'un élément d'une map en fonction de sa valeur
      * @param <T>
@@ -1283,6 +1314,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddRecette;
     private javax.swing.JButton jButtonDeleteCategory;
     private javax.swing.JButton jButtonDeleteIngredient;
+    private javax.swing.JButton jButtonDeleteUtilisateurs;
     private javax.swing.JButton jButtonModifyCategory;
     private javax.swing.JButton jButtonModifyIngredient;
     private javax.swing.JButton jButtonSearchCategory;
@@ -1352,6 +1384,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAddRecette;
     private javax.swing.JTextField jTextFieldAddVilleUser;
     private javax.swing.JTextField jTextFieldChooseCategorieIngredient;
+    private javax.swing.JTextField jTextFieldDeleteUtilisateurs;
     private javax.swing.JTextField jTextFieldListIngredients;
     private javax.swing.JTextField jTextFieldPrixIngredient;
     private javax.swing.JTextField jTextFieldSearchCategory;

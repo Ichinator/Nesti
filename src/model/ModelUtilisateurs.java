@@ -305,5 +305,20 @@ public class ModelUtilisateurs {
         return mapCuisiniers;
     }
 
+    public static void deleteUtilisateur(int idUser) {
+        Connection co = Model.startConnection();
+        
+        try{
+            String querySelect = "DELETE FROM Utilisateurs WHERE id = ?";
+            PreparedStatement stmt = co.prepareStatement(querySelect);
+            stmt.setInt(1, idUser);
+            stmt.executeUpdate();
+            
+            Model.closeConnection(co);
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+
     
 }
