@@ -7,6 +7,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -41,6 +42,21 @@ public class ModelCours {
         }catch(SQLException e){
             System.out.println(e);
         }
+    }
+
+    public static ResultSet selectAllCours() {
+        Connection co = Model.startConnection();
+        ResultSet rs = null;
+        try{
+            String queryInsert = "SELECT Cours.id, Utilisateurs.nom, Utilisateurs.prenom, ville, jointureLieuxVille.adresse, Cours. PlageHoraire_PlageHor FROM Cours JOIN (SELECT * FROM Lieux JOIN Ville ON Ville_idVille = idVille ) AS jointureLieuxVille ON Lieux_idLieux = idLieux JOIN Utilisateurs ON Utilisateurs.id = Cuisinier_idCuisinier JOIN Recette ON Recette_idRec = idRec";
+            
+            PreparedStatement stmt = co.prepareStatement(queryInsert);
+            rs = stmt.executeQuery();
+                    
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return rs;
     }
     
 }

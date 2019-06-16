@@ -63,6 +63,8 @@ public class Main extends javax.swing.JFrame {
         fillJTableRecettes();
         
         fillJTableIngredients();
+        
+        fillJTableCours();
 
         jComboBoxAddVilleUser.removeAllItems();
         jComboBoxChooseCategorieIngredient.removeAllItems();
@@ -111,6 +113,11 @@ public class Main extends javax.swing.JFrame {
         // On remplit jTableRecettes avec le ResultSet
         ResultSet result = model.ModelIngredient.selectAllIngredients();
         jTableIngredients.setModel(DbUtils.resultSetToTableModel(result));
+    }
+    
+    private void fillJTableCours(){
+        ResultSet result = model.ModelCours.selectAllCours();
+        jTableCours.setModel(DbUtils.resultSetToTableModel(result));
     }
     
     /**
@@ -238,6 +245,8 @@ public class Main extends javax.swing.JFrame {
         jComboBoxAddCoursPlageHoraire = new javax.swing.JComboBox<>();
         jComboBoxAddCoursCuisinier = new javax.swing.JComboBox<>();
         jComboBoxAddCoursLieux = new javax.swing.JComboBox<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTableCours = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jTextFieldAddRecette = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -678,7 +687,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1127, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1266, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -756,6 +765,19 @@ public class Main extends javax.swing.JFrame {
 
         jComboBoxAddCoursLieux.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jTableCours.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane7.setViewportView(jTableCours);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -771,18 +793,20 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jComboBoxAddCoursRecette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxAddCoursPlageHoraire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(387, 387, 387)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(137, 137, 137)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelCuisinierInCours)
                             .addComponent(jLabelLieuxInCours))
-                        .addGap(48, 48, 48)
+                        .addGap(61, 61, 61)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxAddCoursCuisinier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jComboBoxAddCoursCuisinier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(475, 475, 475)
+                        .addGap(305, 305, 305)
                         .addComponent(jButtonAddCours)))
-                .addContainerGap(719, Short.MAX_VALUE))
+                .addGap(133, 133, 133)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -793,15 +817,22 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabelCuisinierInCours)
                     .addComponent(jComboBoxAddCoursRecette, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxAddCoursCuisinier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelLieuxInCours)
-                    .addComponent(jLabelPlageHoraireInCours)
-                    .addComponent(jComboBoxAddCoursPlageHoraire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(163, 163, 163)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelLieuxInCours)
+                            .addComponent(jLabelPlageHoraireInCours)
+                            .addComponent(jComboBoxAddCoursPlageHoraire, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jComboBoxAddCoursLieux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(113, 113, 113)
                 .addComponent(jButtonAddCours)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 258, Short.MAX_VALUE))
         );
 
         jTabbedPanelCours.addTab("Cours", jPanel8);
@@ -1362,9 +1393,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPanelCours;
     private javax.swing.JTable jTableCategory;
+    private javax.swing.JTable jTableCours;
     private javax.swing.JTable jTableIngredients;
     private javax.swing.JTable jTableRecettes;
     private javax.swing.JTable jTableUsers;
